@@ -16,7 +16,7 @@ const app_1 = __importDefault(require("./app"));
 const conexion_1 = require("./database/conexion");
 app_1.default.listen(3500, () => __awaiter(void 0, void 0, void 0, function* () {
     console.log(`Server on port 3500`);
-    yield conexion_1.sequalize.authenticate().then(() => {
+    yield conexion_1.sequalize.sync({ force: false }).then(() => {
         console.log(`conected db`);
     })
         .catch((err) => {
