@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createProduct = exports.getProjects = void 0;
+exports.deleteProject = exports.updateProject = exports.createProjects = exports.getProjects = void 0;
 const Projects_1 = require("../models/Projects");
 const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -23,7 +23,7 @@ const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getProjects = getProjects;
-const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const createProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, priority, description } = req.body;
     try {
         let newProject = yield Projects_1.Projects.create({
@@ -31,7 +31,7 @@ const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             priority,
             description
         }, { fields: ["name", "priority", "description"] });
-        return res.json(newProject);
+        res.json(newProject);
     }
     catch (err) {
         res.status(500).json({
@@ -39,4 +39,40 @@ const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
 });
-exports.createProduct = createProduct;
+exports.createProjects = createProjects;
+const updateProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { name, priority, description } = req.body;
+    const { id } = req.params;
+    try {
+        yield Projects_1.Projects.update({
+            name,
+            priority,
+            description
+        }, {
+            where: {
+                id
+            }
+        }).then(() => {
+            console.log(`project update`);
+        });
+    }
+    catch (err) {
+        res.status(500).json({
+            message: err.message,
+        });
+    }
+});
+exports.updateProject = updateProject;
+const deleteProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const user = yield Projects_1.Projects.findByPk(id);
+        user ? () => __awaiter(void 0, void 0, void 0, function* () { yield user.destroy(), res.send("project destroyed"); }) : res.send("project not exist");
+    }
+    catch (err) {
+        res.status(500).json({
+            message: err.message,
+        });
+    }
+});
+exports.deleteProject = deleteProject;

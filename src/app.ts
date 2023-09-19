@@ -7,7 +7,6 @@ import taskRoutes from './routes/tasks.routes'
 dotenv.config();
 
 const app = express();
-
 app.use(taskRoutes)
 
 export default app;
