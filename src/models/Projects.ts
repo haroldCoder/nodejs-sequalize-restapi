@@ -17,7 +17,7 @@ export const Projects : ModelCtor<Model<any, any>> = sequalize.define('projects'
     description:{
         type: DataTypes.STRING
     }
-},{timestamps: true})
+},{timestamps: false})
 
 Projects.hasMany(Task, {
     foreignKey: "projectId",
@@ -28,3 +28,4 @@ Task.belongsTo(Projects,{
     foreignKey: "projectId",
     targetKey: "id"
 })
+

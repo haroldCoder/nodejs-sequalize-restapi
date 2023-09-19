@@ -14,12 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
 const conexion_1 = require("./database/conexion");
+const projects_routes_1 = __importDefault(require("./routes/projects.routes"));
 app_1.default.listen(3500, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`Server on port 3500`);
-    yield conexion_1.sequalize.sync({ force: false }).then(() => {
+    yield conexion_1.sequalize.sync({ force: false }).then(() => __awaiter(void 0, void 0, void 0, function* () {
         console.log(`conected db`);
-    })
+        app_1.default.use("/", projects_routes_1.default);
+    }))
         .catch((err) => {
         console.log(err);
     });
+    console.log(`Server on port 3500`);
 }));

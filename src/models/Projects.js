@@ -19,7 +19,7 @@ exports.Projects = conexion_1.sequalize.define('projects', {
     description: {
         type: sequelize_1.DataTypes.STRING
     }
-}, { timestamps: true });
+}, { timestamps: false });
 exports.Projects.hasMany(Tasks_1.Task, {
     foreignKey: "projectId",
     sourceKey: "id"

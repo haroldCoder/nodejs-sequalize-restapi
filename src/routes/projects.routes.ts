@@ -1,8 +1,8 @@
 import { Router } from "express";
-
+import {getProjects} from '../controllers/projects.controllers'
 const router = Router();
 
-router.get('projects')
+router.get('/projects', getProjects);
 router.post('projects')
 router.get('projects/:id')
 router.put('projects/:id')
