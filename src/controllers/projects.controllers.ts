@@ -61,7 +61,13 @@ export const deleteProject = async(req: Request, res: Response) =>{
     try{
         const user = await Projects.findByPk(id);
 
-        user ? async()=>{await user.destroy(), res.send("project destroyed")}  : res.send("project not exist") 
+        if (user){
+            await user.destroy()
+            res.send("project destroyed")
+        }
+        else{
+            res.send("project not exist") 
+        } 
     }
     catch (err: any) {
         res.status(500).json({

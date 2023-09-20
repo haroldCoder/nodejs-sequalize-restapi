@@ -68,7 +68,13 @@ const deleteProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const { id } = req.params;
     try {
         const user = yield Projects_1.Projects.findByPk(id);
-        user ? () => __awaiter(void 0, void 0, void 0, function* () { yield user.destroy(), res.send("project destroyed"); }) : res.send("project not exist");
+        if (user) {
+            yield user.destroy();
+            res.send("project destroyed");
+        }
+        else {
+            res.send("project not exist");
+        }
     }
     catch (err) {
         res.status(500).json({

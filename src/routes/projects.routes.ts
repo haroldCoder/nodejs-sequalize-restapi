@@ -6,6 +6,6 @@ router.get('/projects', getProjects);
 router.post('/projects', createProjects)
 router.get('/projects/:id')
 router.put('/projects/:id', updateProject)
-router.delete('projects/:id', deleteProject)
+router.delete('/projects/:id', deleteProject)
 
 export default router;

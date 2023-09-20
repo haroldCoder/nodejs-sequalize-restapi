@@ -7,5 +7,5 @@ router.get('/projects', projects_controllers_1.getProjects);
 router.post('/projects', projects_controllers_1.createProjects);
 router.get('/projects/:id');
 router.put('/projects/:id', projects_controllers_1.updateProject);
-router.delete('projects/:id', projects_controllers_1.deleteProject);
+router.delete('/projects/:id', projects_controllers_1.deleteProject);
 exports.default = router;
