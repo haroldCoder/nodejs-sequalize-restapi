@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Task = void 0;
 const conexion_1 = require("../database/conexion");
 const sequelize_1 = require("sequelize");
-exports.Task = conexion_1.sequalize.define('task', {
+exports.Task = conexion_1.sequalize.define('tasks', {
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         primaryKey: true,
@@ -16,6 +16,9 @@ exports.Task = conexion_1.sequalize.define('task', {
         type: sequelize_1.DataTypes.BOOLEAN,
         defaultValue: false
     },
+    projectid: {
+        type: sequelize_1.DataTypes.INTEGER,
+    }
 }, {
     timestamps: false
 });

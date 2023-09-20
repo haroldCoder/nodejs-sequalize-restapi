@@ -24,10 +24,10 @@ exports.Projects = conexion_1.sequalize.define('projects', {
     }
 }, { timestamps: false });
 exports.Projects.hasMany(Tasks_1.Task, {
-    foreignKey: "projectId",
+    foreignKey: "projectid",
     sourceKey: "id"
 });
 Tasks_1.Task.belongsTo(exports.Projects, {
-    foreignKey: "projectId",
+    foreignKey: "projectid",
     targetKey: "id"
 });

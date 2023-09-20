@@ -23,12 +23,12 @@ export const Projects : ModelCtor<Model<any, any>> = sequalize.define('projects'
 },{timestamps: false})
 
 Projects.hasMany(Task, {
-    foreignKey: "projectId",
+    foreignKey: "projectid",
     sourceKey: "id"
 });
 
 Task.belongsTo(Projects,{
-    foreignKey: "projectId",
+    foreignKey: "projectid",
     targetKey: "id"
 })
 
