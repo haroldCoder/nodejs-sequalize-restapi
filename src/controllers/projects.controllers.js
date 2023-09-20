@@ -24,13 +24,14 @@ const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getProjects = getProjects;
 const createProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, priority, description } = req.body;
+    const { name, priority, description, deliverydate } = req.body;
     try {
         let newProject = yield Projects_1.Projects.create({
             name,
             priority,
-            description
-        }, { fields: ["name", "priority", "description"] });
+            description,
+            deliverydate
+        }, { fields: ["name", "priority", "description", "deliverydate"] });
         res.json(newProject);
     }
     catch (err) {

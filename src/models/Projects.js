@@ -18,6 +18,9 @@ exports.Projects = conexion_1.sequalize.define('projects', {
     },
     description: {
         type: sequelize_1.DataTypes.STRING
+    },
+    deliverydate: {
+        type: sequelize_1.DataTypes.STRING
     }
 }, { timestamps: false });
 exports.Projects.hasMany(Tasks_1.Task, {

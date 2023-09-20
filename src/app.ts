@@ -8,5 +8,6 @@ dotenv.config();
 
 const app = express();
 app.use(taskRoutes)
+app.use(morgan("dev"));
 
 export default app;

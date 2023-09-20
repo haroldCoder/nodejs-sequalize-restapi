@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 app.use(bodyParser.json())
 
 app.listen(3500, async()=>{
-    await sequalize.sync({force: false}).then(async()=>{
+    await sequalize.authenticate().then(async()=>{
         console.log(`conected db`);
         app.use("/", projects);
     })

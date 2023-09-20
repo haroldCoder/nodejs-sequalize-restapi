@@ -14,13 +14,14 @@ export const getProjects = async (req: Request, res: Response) => {
 }
 
 export const createProjects = async (req: Request, res: Response) => {
-    const { name, priority, description } = req.body;
+    const { name, priority, description, deliverydate } = req.body;
     try {
         let newProject = await Projects.create({
             name,
             priority,
-            description
-        }, { fields: ["name", "priority", "description"] });
+            description,
+            deliverydate
+        }, { fields: ["name", "priority", "description", "deliverydate"] });
 
         res.json(newProject);
     }

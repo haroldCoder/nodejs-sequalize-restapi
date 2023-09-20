@@ -16,6 +16,9 @@ export const Projects : ModelCtor<Model<any, any>> = sequalize.define('projects'
     },
     description:{
         type: DataTypes.STRING
+    },
+    deliverydate: {
+        type: DataTypes.STRING
     }
 },{timestamps: false})
 
